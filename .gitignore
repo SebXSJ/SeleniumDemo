@@ -1,0 +1,17 @@
+# Gradle
+# ------
+.gradle
+build/
+
+# IDEA
+# ----
+.idea/
+.shelf
+/*.iml
+/*.ipr
+/*.iws
+/out
+
+# Gradle:
+.idea/gradle.xml
+.idea/libraries

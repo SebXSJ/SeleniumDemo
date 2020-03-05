@@ -38,7 +38,7 @@ public class MyTest {
         assertEquals(HomePage
                 .using(driver)
                 .getLoggingUserName(), "Welcome Admin");
-        System.out.println("");
+        System.out.println(HomePage.using(driver).getLoggingUserName());
 
     }
 
