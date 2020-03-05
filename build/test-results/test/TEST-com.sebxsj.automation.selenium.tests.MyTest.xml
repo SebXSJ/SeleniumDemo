@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.sebxsj.automation.selenium.tests.MyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-03-05T08:56:20" hostname="AMDC3459" time="10.577">
+  <properties/>
+  <testcase name="test001_SingIn()" classname="com.sebxsj.automation.selenium.tests.MyTest" time="10.577"/>
+  <system-out><![CDATA[09:56:21.250 INFO  i.g.b.w.WebDriverManager - Using chromedriver 80.0.3987.106 (since Google Chrome 80 is installed in your machine)
+09:56:21.273 INFO  i.g.b.w.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\Automation\.m2\repository\webdriver\chromedriver\win32\80.0.3987.106\chromedriver.exe
+]]></system-out>
+  <system-err><![CDATA[Starting ChromeDriver 80.0.3987.16 (320f6526c1632ad4f205ebce69b99a062ed78647-refs/branch-heads/3987@{#185}) on port 32079
+Only local connections are allowed.
+Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
+Mar 05, 2020 9:56:26 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+[1583398587.229][SEVERE]: Timed out receiving message from renderer: 0.100
+[1583398587.330][SEVERE]: Timed out receiving message from renderer: 0.100
+[1583398587.431][SEVERE]: Timed out receiving message from renderer: 0.100
+[1583398587.532][SEVERE]: Timed out receiving message from renderer: 0.100
+[1583398589.215][SEVERE]: Timed out receiving message from renderer: 0.100
+[1583398589.385][SEVERE]: Timed out receiving message from renderer: 0.100
+]]></system-err>
+</testsuite>
