@@ -1,6 +1,13 @@
-# Default ignored files
-.gitignore
-/workspace.xml
-.idea/
-*.iml
-out/
+# Gradle
+# ------
+.gradle
+/build
+
+# IDEA
+# ----
+.idea
+.shelf
+/*.iml
+/*.ipr
+/*.iws
+/out
