@@ -15,8 +15,8 @@ public class HomePage {
 
 
     @FindBy(how = How.ID, using = "welcome")
-
     private WebElement wWelcomePanelInfo;
+
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -31,5 +31,7 @@ public class HomePage {
     public String getLoggingUserName (){
         return this.wWelcomePanelInfo.getText();
     }
+
+    
 
 }

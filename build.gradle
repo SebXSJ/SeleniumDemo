@@ -17,17 +17,21 @@ ext {
     seleniumVersion = "3.141.59"
     junitJupiterVersion = "5.4.2"
     webDriverManagerVersion = "3.8.1"
+    junitPlatformLauncher = "1.6.0"
 }
 
 
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.0")
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.6.0")
+    //testRuntime("org.junit.platform:junit-platform-runner:1.5.2")
     //testImplementation("org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}")
     testCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: seleniumVersion
     testCompile("ch.qos.logback:logback-core:${logbackVersion}")
     testCompile("ch.qos.logback:logback-classic:${logbackVersion}")
     testCompile("io.github.bonigarcia:webdrivermanager:${webDriverManagerVersion}")
+    testCompile group: 'org.junit.platform', name: 'junit-platform-launcher', version: junitPlatformLauncher
+    implementation ('junit:junit:4.12')
 
 }
 

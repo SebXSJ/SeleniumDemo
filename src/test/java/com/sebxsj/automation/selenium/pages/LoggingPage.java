@@ -12,6 +12,7 @@ public class LoggingPage {
     public final WebDriverWait wait;
     private static String page_url = "https://opensource-demo.orangehrmlive.com/";
 
+
     @FindBy(how = How.ID, using = "btnLogin")
     private WebElement wLoggingButton;
     @FindBy(how = How.ID, using = "txtUsername")
@@ -21,15 +22,15 @@ public class LoggingPage {
 
     private LoggingPage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver,15);
+        wait = new WebDriverWait(driver, 15);
         PageFactory.initElements(driver, this);
     }
 
-    public static LoggingPage using(WebDriver driver){
+    public static LoggingPage using(WebDriver driver) {
         return new LoggingPage(driver);
     }
 
-    public LoggingPage launch(){
+    public LoggingPage launch() {
         driver.get(page_url);
         return this;
     }
@@ -49,4 +50,6 @@ public class LoggingPage {
         this.wLoggingButton.click();
         return new HomePage(driver);
     }
+
+
 }

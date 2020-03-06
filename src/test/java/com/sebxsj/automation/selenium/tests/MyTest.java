@@ -1,6 +1,5 @@
 package com.sebxsj.automation.selenium.tests;
 
-import com.google.gson.internal.bind.util.ISO8601Utils;
 import com.sebxsj.automation.selenium.pages.HomePage;
 import com.sebxsj.automation.selenium.pages.LoggingPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -12,6 +11,8 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
+@TestMethodOrder(MethodOrderer.Alphanumeric.class)
 public class MyTest {
 
     ClassLoader classLoader = getClass().getClassLoader();
@@ -24,27 +25,40 @@ public class MyTest {
         System.setProperty("webdriver.chrome.driver", pathDriver);
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-    }
-
-
-    @Test
-    public void test001_SingIn() {
-
-        LoggingPage
-                .using(driver)
-                .launch()
-                .inputTextToUserNameField("Admin")
-                .inputTextToPasswordTextField("admin123").clickOnLoggingButton();
-        assertEquals(HomePage
-                .using(driver)
-                .getLoggingUserName(), "Welcome Admin");
 
     }
-
 
     @AfterEach
     void tearDown() {
         driver.quit();
     }
 
+
+    @Test
+    @DisplayName("Logging to page test as Admin account")
+    @Tag("Logging")
+    @RepeatedTest(2)
+    public void test001_SingIn() {
+
+        LoggingPage
+                .using(driver)
+                .launch()
+                .inputTextToUserNameField("Admin")
+                .inputTextToPasswordTextField("admin123")
+                .clickOnLoggingButton();
+        assertAll(
+                () -> assertEquals(HomePage
+                        .using(driver)
+                        .getLoggingUserName(), "Welcome Admin"),
+                () -> assertEquals(true, true)
+        );
+    }
+
+    @Test
+    @DisplayName("Dashboard display after logging to account")
+    @Tag("Dashboard")
+    @RepeatedTest(2)
+    public void test002_DashboardDefaultViewAfterLogging() {
+
+    }
 }
