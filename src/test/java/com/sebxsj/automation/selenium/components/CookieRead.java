@@ -9,9 +9,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class CookieRead {
+public class CookieRead extends Utility {
 
-    public static void main(WebDriver driver) {
+    public static void readCookieLogging(WebDriver driver) {
+        Utility utility = new Utility();
         File file = new File("Cookies.data");
         try {
             file.delete();
@@ -22,6 +23,7 @@ public class CookieRead {
                 bufferedWriter.write(cookie.getName() + ";" + cookie.getValue()
                         + ":" + cookie.getDomain() + ":" + cookie.getPath() + ";" + cookie.getExpiry() + ";" + cookie.isSecure());
                 bufferedWriter.newLine();
+                driver.get(utility.page_url);
             }
             bufferedWriter.close();
             fileWriter.close();

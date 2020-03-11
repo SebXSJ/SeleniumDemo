@@ -1,10 +1,13 @@
 package com.sebxsj.automation.selenium.tests;
 
 import com.sebxsj.automation.selenium.components.CookieRead;
+import com.sebxsj.automation.selenium.components.CookieWrite;
+import com.sebxsj.automation.selenium.components.Utility;
 import com.sebxsj.automation.selenium.pages.HomePage;
 import com.sebxsj.automation.selenium.pages.LoggingPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -48,7 +51,7 @@ public class MyTest {
                 .inputTextToUserNameField("Admin")
                 .inputTextToPasswordTextField("admin123")
                 .clickOnLoggingButton();
-        CookieRead.main(driver);
+        CookieRead.readCookieLogging(driver);
         assertAll(
                 () -> assertEquals(HomePage
                         .using(driver)
@@ -60,10 +63,15 @@ public class MyTest {
     @Test
     @DisplayName("Dashboard display after logging to account")
     @Tag("Dashboard")
-    @RepeatedTest(2)
-    public void test002_DashboardDefaultViewAfterLogging() {
-        loggingPage.adminLogging();
-
+    //@RepeatedTest(2)
+    public void test002_DashboardDefaultViewAfterLogging() throws InterruptedException {
+        CookieWrite.writeCookieLogging(driver);
+        assertAll(
+                () -> assertEquals(HomePage
+                        .using(driver)
+                        .getLoggingUserName(), "Welcome Admin"),
+                () -> assertEquals(true, true)
+        );
 
 
     }

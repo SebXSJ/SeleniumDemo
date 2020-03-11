@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 import java.io.*;
 import java.util.*;
 
-public class CookieWrite {
-    public static void main(WebDriver webDriver) {
+public class CookieWrite{
+    public static void writeCookieLogging(WebDriver driver) {
         try {
             File file = new File("Cookies.data");
             FileReader fileReader = new FileReader(file);
@@ -30,7 +30,7 @@ public class CookieWrite {
                     Boolean isSecure = new Boolean(token.nextToken()).booleanValue();
                     Cookie cookie = new Cookie(name, value, domain, path, expiry, isSecure);
                     System.out.println(cookie);
-                    webDriver.manage().addCookie(cookie);
+                    driver.manage().addCookie(cookie);
                 }
             }
 
