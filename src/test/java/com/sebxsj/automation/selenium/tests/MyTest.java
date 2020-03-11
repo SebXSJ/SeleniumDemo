@@ -1,5 +1,6 @@
 package com.sebxsj.automation.selenium.tests;
 
+import com.sebxsj.automation.selenium.components.CookieRead;
 import com.sebxsj.automation.selenium.pages.HomePage;
 import com.sebxsj.automation.selenium.pages.LoggingPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -7,6 +8,7 @@ import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.sql.Driver;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,7 +29,7 @@ public class MyTest {
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
     }
-
+    LoggingPage loggingPage;
     @AfterEach
     void tearDown() {
         driver.quit();
@@ -37,7 +39,7 @@ public class MyTest {
     @Test
     @DisplayName("Logging to page test as Admin account")
     @Tag("Logging")
-    @RepeatedTest(2)
+    @RepeatedTest(1)
     public void test001_SingIn() {
 
         LoggingPage
@@ -46,6 +48,7 @@ public class MyTest {
                 .inputTextToUserNameField("Admin")
                 .inputTextToPasswordTextField("admin123")
                 .clickOnLoggingButton();
+        CookieRead.main(driver);
         assertAll(
                 () -> assertEquals(HomePage
                         .using(driver)
@@ -59,6 +62,9 @@ public class MyTest {
     @Tag("Dashboard")
     @RepeatedTest(2)
     public void test002_DashboardDefaultViewAfterLogging() {
+        loggingPage.adminLogging();
+
+
 
     }
 }

@@ -7,6 +7,10 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.sql.Driver;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class LoggingPage {
     public final WebDriver driver;
     public final WebDriverWait wait;
@@ -49,6 +53,19 @@ public class LoggingPage {
     public HomePage clickOnLoggingButton() {
         this.wLoggingButton.click();
         return new HomePage(driver);
+    }
+    public LoggingPage adminLogging(){
+
+        LoggingPage
+                .using(driver)
+                .launch()
+                .inputTextToUserNameField("Admin")
+                .inputTextToPasswordTextField("admin123")
+                .clickOnLoggingButton();
+        assertEquals(HomePage
+                .using(driver)
+                .getLoggingUserName(), "Welcome Admin");
+        return this;
     }
 
 
