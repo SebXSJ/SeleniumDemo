@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePage {
 
+
     public final WebDriver driver;
     public final WebDriverWait wait;
     private static String page_url = "https://opensource-demo.orangehrmlive.com/index.php/dashboard";
@@ -18,20 +19,24 @@ public class HomePage {
     private WebElement wWelcomePanelInfo;
 
 
-    public HomePage(WebDriver driver) {
+    public HomePage(WebDriver driver) throws InterruptedException {
         this.driver = driver;
-        wait = new WebDriverWait(driver,15);
+        wait = new WebDriverWait(driver, 15);
         PageFactory.initElements(driver, this);
     }
 
-    public static HomePage using(WebDriver driver){
+    public static HomePage using(WebDriver driver) throws InterruptedException {
         return new HomePage(driver);
     }
 
-    public String getLoggingUserName (){
+    public HomePage launch() {
+        driver.get(page_url);
+        return this;
+    }
+
+    public String getLoggingUserName() {
         return this.wWelcomePanelInfo.getText();
     }
 
-    
 
 }
